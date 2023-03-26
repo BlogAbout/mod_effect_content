@@ -811,7 +811,7 @@
 
     <updateservers>
         <server type="extension" priority="1" name="Module Effect Content">
-            http://blog-about.ru/update/mod_effect_content_update.xml
+            http://blog-about.ru/update/mod_effect_content_v4_update.xml
         </server>
     </updateservers>
 </extension>
