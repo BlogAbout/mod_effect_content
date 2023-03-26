@@ -1,245 +1,817 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="3.0" method="upgrade">
-	<!-- Название модуля -->
-	<name>MOD_EFFECT_CONTENT</name>
-	<!-- Следующие элементы являются не обязательными, информация об авторе, копирайте и т.п. -->
-	<creationDate>Май 2016</creationDate>
-	<author>А.П.В.</author>
-	<authorEmail>info@blog-about.ru</authorEmail>
-	<copyright>Copyright(C) 2016 Module Effect Content</copyright>
-	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
-	<!--  Версия модуля запишется в БД таблица extension -->
-	<version>0.3.7</version>
-	<!-- Описание, не обязательно, по умолчанию использеуется имя модуля -->
-	<description>MOD_EFFECT_CONTENT_XML_DESCRIPTION</description>
-	
-	<!-- Обратите внимание на атрибут folder, он указывает из какой директории будут копироваться файлы  -->
-	<files>
-		<filename module="mod_effect_content">mod_effect_content.php</filename>
-		<filename>mod_effect_content.xml</filename>
-		<filename>index.html</filename>
-		<filename>helper.php</filename>
-		<folder>css</folder>
-		<folder>js</folder>
-		<folder>fields</folder>
-		<folder>tmpl</folder>
-	</files>
-	<config>
-		<fields name="params">
-			<!-- Основные параметры для модуля -->
-			<fieldset name="basic">
-				<field name="layout" type="list" default="default_category" label="MOD_EFFECT_CONTENT_TYPE_LAYOUT" description="MOD_EFFECT_CONTENT_TYPE_LAYOUT_DESC">
-					<option value="categories_joomla">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEGORIES_JOOMLA</option>
-					<option value="articles_joomla">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ARTICLES_JOOMLA</option>
-					<option value="articles_joomla_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ARTICLES_JOOMLA_ID</option>
-					<option value="categories_joomshopping">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEROGIES_JOOMSHOPPING</option>
-					<option value="products_joomshopping">MOD_EFFECT_CONTENT_TYPE_LAYOUT_PRODUCTS_JOOMSHOPPING</option>
-					<option value="products_joomshopping_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_PRODUCTS_JOOMSHOPPING_ID</option>
-					<option value="categories_k2">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEROGIES_K2</option>
-					<option value="items_k2">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ITEMS_K2</option>
-					<option value="items_k2_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ITEMS_K2_ID</option>
-					<option value="categories_adsmanager">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEROGIES_ADSMANAGER</option>
-					<option value="ads_adsmanager">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ADS_ADSMANAGER</option>
-					<option value="ads_adsmanager_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ADS_ADSMANAGER_ID</option>
-				</field>
-				<field name="field_sort" type="list" label="MOD_EFFECT_CONTENT_FIELD_SORT" description="MOD_EFFECT_CONTENT_FIELD_SORT_DESC" default="1">
-					<option value="1">MOD_EFFECT_CONTENT_FIELD_SORT_ID</option>
-					<option value="2">MOD_EFFECT_CONTENT_FIELD_SORT_NAME</option>
-					<option value="3">MOD_EFFECT_CONTENT_FIELD_SORT_DATE</option>
-					<option value="4">MOD_EFFECT_CONTENT_FIELD_SORT_ORDERING</option>
-					<option value="5">MOD_EFFECT_CONTENT_FIELD_SORT_RAND</option>
-				</field>
-				<field name="type_sort" type="list" label="MOD_EFFECT_CONTENT_TYPE_SORT" description="MOD_EFFECT_CONTENT_TYPE_SORT_DESC" default="1">
-					<option value="ASC">MOD_EFFECT_CONTENT_TYPE_SORT_ASC</option>
-					<option value="DESC">MOD_EFFECT_CONTENT_TYPE_SORT_DESC</option>
-				</field>
-				<field name="dinamic_content" type="list" label="MOD_EFFECT_CONTENT_DINAMIC_CONTENT" description="MOD_EFFECT_CONTENT_DINAMIC_CONTENT_DESC" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="note18" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_DINAMIC_CONTENT" description="MOD_EFFECT_CONTENT_DINAMIC_CONTENT_NOTE" />
-				<field name="items_count" type="number" label="MOD_EFFECT_CONTENT_ITEMS_COUNT" description="MOD_EFFECT_CONTENT_ITEMS_COUNT_DESC" default="0" />
-				<field name="cols_count" type="number" label="MOD_EFFECT_CONTENT_COLS_COUNT" description="MOD_EFFECT_CONTENT_COLS_COUNT_DESC" default="0" />
-				<field name="pages_count" type="number" label="MOD_EFFECT_CONTENT_PAGES_COUNT" description="MOD_EFFECT_CONTENT_PAGES_COUNT_DESC" default="0" />
-				<field name="note19" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_PAGES_COUNT" description="MOD_EFFECT_CONTENT_PAGES_COUNT_NOTE" />
-				<field name="block_width" type="number" label="MOD_EFFECT_CONTENT_BLOCK_WIDTH" description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_DESC" default="260" />
-				<field name="note1" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_BLOCK_WIDTH" description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_NOTE" />
-				<field name="block_height" type="number" label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" default="260" />
-				<field name="note2" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT_NOTE" />
-				<field name="text_start" type="editor" label="MOD_EFFECT_CONTENT_TEXT_START" description="MOD_EFFECT_CONTENT_TEXT_START_DESC" width="300" filter="safehtml" />
-				<field name="text_end" type="editor" label="MOD_EFFECT_CONTENT_TEXT_END" description="MOD_EFFECT_CONTENT_TEXT_END_DESC" width="300" filter="safehtml" />
-			</fieldset>
-			
-			<!-- Параметры вывода контента Joomla -->
-			<fieldset name="MOD_EFFECT_CONTENT_JOOMLA">
-				<field name="com_categories" type="category" multiple="multiple" extension="com_content" default="" label="MOD_EFFECT_CONTENT_COM_CATEGORIES" description="MOD_EFFECT_CONTENT_COM_CATEGORIES_DESC" />
-				<field name="note3" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_COM_CATEGORIES" description="MOD_EFFECT_CONTENT_COM_CATEGORIES_NOTE" />
-				<field name="articles_id" type="text" label="MOD_EFFECT_CONTENT_ARTICLES_ID" description="MOD_EFFECT_CONTENT_ARTICLES_ID_DESC" default="" />
-				<field name="note4" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_ARTICLES_ID" description="MOD_EFFECT_CONTENT_ARTICLES_ID_NOTE" />
-				<field name="joomla_image_from" type="list" label="MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM" description="MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_DESC" default="0">
-					<option value="0">MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_FIRST</option>
-					<option value="1">MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_INTRO</option>
-					<option value="2">MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_DETAIL</option>
-				</field>
-				<field name="joomla_desc_from" type="list" label="MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM" description="MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_DESC" default="0">
-					<option value="0">MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_INTRO</option>
-					<option value="1">MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_DETAIL</option>
-					<option value="2">MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_META</option>
-				</field>
-			</fieldset>
-			
-			<!-- Параметры вывода контента Joomshopping -->
-			<fieldset name="MOD_EFFECT_CONTENT_JOOMSHOPPING" addfieldpath="/modules/mod_effect_content/fields">
-				<field name="jshoppingcategories" type="jshoppingcategories" multiple="multiple" default="" label="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING" description="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING_DESC" />
-				<field name="note5" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING" description="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING_NOTE" />
-				<field name="products_id" type="text" label="MOD_EFFECT_CONTENT_PRODUCTS_ID" description="MOD_EFFECT_CONTENT_PRODUCTS_ID_DESC" default="" />
-				<field name="note6" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_PRODUCTS_ID" description="MOD_EFFECT_CONTENT_PRODUCTS_ID_NOTE" />
-			</fieldset>
-			
-			<!-- Параметры вывода контента K2 -->
-			<fieldset name="MOD_EFFECT_CONTENT_K2" addfieldpath="/modules/mod_effect_content/fields">
-				<field name="k2categories" type="k2categories" multiple="multiple" default="" label="MOD_EFFECT_CONTENT_CATEGORIES_K2" description="MOD_EFFECT_CONTENT_CATEGORIES_K2_DESC" />
-				<field name="note11" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_CATEGORIES_K2" description="MOD_EFFECT_CONTENT_CATEGORIES_K2_NOTE" />
-				<field name="k2items_id" type="text" label="MOD_EFFECT_CONTENT_ITEMS_K2_ID" description="MOD_EFFECT_CONTENT_ITEMS_K2_ID_DESC" default="" />
-				<field name="note12" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_ITEMS_K2_ID" description="MOD_EFFECT_CONTENT_ITEMS_K2_ID_NOTE" />
-			</fieldset>
-			
-			<!-- Параметры вывода контента AdsManager -->
-			<fieldset name="MOD_EFFECT_CONTENT_ADSMANAGER" addfieldpath="/modules/mod_effect_content/fields">
-				<field name="adsmanagercategories" type="adsmanagercategories" multiple="multiple" default="" label="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER" description="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER_DESC" />
-				<field name="note13" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER" description="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER_NOTE" />
-				<field name="ads_id" type="text" label="MOD_EFFECT_CONTENT_ADS_ID" description="MOD_EFFECT_CONTENT_ADS_ID_DESC" default="" />
-				<field name="note14" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_ADS_ID" description="MOD_EFFECT_CONTENT_ADS_ID_NOTE" />
-			</fieldset>
-				
-			<!-- Параметры отображения -->
-			<fieldset name="MOD_EFFECT_CONTENT_DISPLAY">
-				<field name="type_style" type="list" label="MOD_EFFECT_CONTENT_TYPE_STYLE" description="MOD_EFFECT_CONTENT_TYPE_STYLE_DESC" default="1">
-					<option value="1">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE1</option>
-					<option value="2">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE2</option>
-					<option value="3">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE3</option>
-					<option value="4">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE4</option>
-					<option value="5">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE5</option>
-					<option value="6">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE6</option>
-					<option value="7">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE7</option>
-					<option value="8">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE8</option>
-					<option value="9">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE9</option>
-				</field>
-				<field name="center_blocks" type="list" label="MOD_EFFECT_CONTENT_CENTER_BLOCKS" description="MOD_EFFECT_CONTENT_CENTER_BLOCKS_DESC" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="link_all" type="list" label="MOD_EFFECT_CONTENT_LINK_ALL" description="MOD_EFFECT_CONTENT_LINK_ALL_DESC" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="display_image" type="list" label="MOD_EFFECT_CONTENT_DISPLAY_IMAGE" description="MOD_EFFECT_CONTENT_DISPLAY_IMAGE_DESC" default="1">
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
-				<field name="note7" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_DISPLAY_IMAGE" description="MOD_EFFECT_CONTENT_DISPLAY_IMAGE_NOTE" />
-				<field name="image_not_found" type="media" label="MOD_EFFECT_CONTENT_NOT_IMAGE" description="MOD_EFFECT_CONTENT_NOT_IMAGE_DESC" preview="true" preview_width="200" preview_height="200" />
-				<field name="image_width" type="text" label="MOD_EFFECT_CONTENT_IMAGE_WIDTH" description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_DESC" default="260" />
-				<field name="image_height" type="text" label="MOD_EFFECT_CONTENT_IMAGE_HEIGHT" description="MOD_EFFECT_CONTENT_IMAGE_HEIGHT_DESC" default="260" />
-				<field name="note8" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_IMAGE_WIDTH_HEIGHT" description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_HEIGHT_NOTE" />
-				<field name="title_symbol_count" type="number" label="MOD_EFFECT_CONTENT_TITLE_SYMBOL_COUNT" description="MOD_EFFECT_CONTENT_TITLE_SYMBOL_COUNT_DESC" default="0" />
-				<field name="display_price" type="list" label="MOD_EFFECT_CONTENT_DISPLAY_PRICE" description="MOD_EFFECT_CONTENT_DISPLAY_PRICE_DESC" default="1">
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
-				<field name="decimal_count" type="text" label="MOD_EFFECT_CONTENT_DECIMAL_COUNT" description="MOD_EFFECT_CONTENT_DECIMAL_COUNT_DESC" default="2" />
-				<field name="decimal_symbol" type="text" label="MOD_EFFECT_CONTENT_DECIMAL_SYMBOL" description="MOD_EFFECT_CONTENT_DECIMAL_SYMBOL_DESC" default="." />
-				<field name="thousand_separator" type="text" label="MOD_EFFECT_CONTENT_THOUSAND_SEPARATOR" description="MOD_EFFECT_CONTENT_THOUSAND_SEPARATOR_DESC" default="" />
-				<field name="note9" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_DISPLAY_PRICE" description="MOD_EFFECT_CONTENT_DISPLAY_PRICE_NOTE" />
-				<field name="display_description" type="list" label="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION" description="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION_DESC" default="1">
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
-				<field name="note10" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION" description="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION_NOTE" />
-				<field name="symbol_count" type="text" label="MOD_EFFECT_CONTENT_COUNT_SYMBOL" description="MOD_EFFECT_CONTENT_COUNT_SYMBOL_DESC" default="150" />
-				<field name="end_symbol" type="text" label="MOD_EFFECT_CONTENT_COUNT_END_SYMBOL" description="MOD_EFFECT_CONTENT_COUNT_END_SYMBOL_DESC" default="" />
-				<field name="display_read_more" type="list" label="MOD_EFFECT_CONTENT_DISPLAY_READ_MORE" description="MOD_EFFECT_CONTENT_DISPLAY_READ_MORE_DESC" default="1">
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
-				<field name="read_more" type="text" label="MOD_EFFECT_CONTENT_READ_MORE" description="MOD_EFFECT_CONTENT_READ_MORE_DESC" default="Подробнее" />
-				<field name="exclude_active" type="list" label="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE" description="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE_DESC" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="note15" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE" description="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE_NOTE" />
-				
-				<field name="show_date" type="list" label="MOD_EFFECT_CONTENT_SHOW_DATE" description="MOD_EFFECT_CONTENT_SHOW_DATE_DESC" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="date_format" type="text" label="MOD_EFFECT_CONTENT_DATE_FORMAT" description="MOD_EFFECT_CONTENT_DATE_FORMAT_DESC" default="d.m.Y H:i" />
-				<field name="note16" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_SHOW_DATE" description="MOD_EFFECT_CONTENT_SHOW_DATE_NOTE" />
-			</fieldset>
-			
-			<!-- Параметры отображения -->
-			<fieldset name="MOD_EFFECT_CONTENT_DESIGN">
-				<field name="color_bg" type="color" label="MOD_EFFECT_CONTENT_COLOR_BG" description="MOD_EFFECT_CONTENT_COLOR_BG_DESC" default="#fff" />
-				<field name="color_bg_hover" type="color" label="MOD_EFFECT_CONTENT_COLOR_BG_HOVER" description="MOD_EFFECT_CONTENT_COLOR_BG_HOVER_DESC" default="#fff" />
-				<field name="color_bg_hover_opacity" type="number" label="MOD_EFFECT_CONTENT_COLOR_BG_HOVER_OPACITY" description="MOD_EFFECT_CONTENT_COLOR_BG_HOVER_OPACITY_DESC" min="0" max="1" step="0.1" default="1" />
-				<field name="color_title" type="color" label="MOD_EFFECT_CONTENT_COLOR_TITLE" description="MOD_EFFECT_CONTENT_COLOR_TITLE_DESC" default="#fff" />
-				<field name="color_title_bg" type="color" label="MOD_EFFECT_CONTENT_COLOR_TITLE_BG" description="MOD_EFFECT_CONTENT_COLOR_TITLE_BG_DESC" default="#000" />
-				<field name="color_title_bg_opacity" type="number" label="MOD_EFFECT_CONTENT_COLOR_TITLE_BG_OPACITY" description="MOD_EFFECT_CONTENT_COLOR_TITLE_BG_OPACITY_DESC" min="0" max="1" step="0.1" default="1" />
-				<field name="color_desc" type="color" label="MOD_EFFECT_CONTENT_COLOR_DESC" description="MOD_EFFECT_CONTENT_COLOR_DESC_DESC" default="#fff" />
-				<field name="color_desc_bg" type="color" label="MOD_EFFECT_CONTENT_COLOR_DESC_BG" description="MOD_EFFECT_CONTENT_COLOR_DESC_BG_DESC" default="#000" />
-				<field name="color_desc_bg_opacity" type="number" label="MOD_EFFECT_CONTENT_COLOR_DESC_BG_OPACITY" description="MOD_EFFECT_CONTENT_COLOR_DESC_BG_OPACITY_DESC" min="0" max="1" step="0.1" default="1" />
-				<field name="color_price" type="color" label="MOD_EFFECT_CONTENT_COLOR_PRICE" description="MOD_EFFECT_CONTENT_COLOR_PRICE_DESC" default="#fff" />
-				<field name="color_price_bg" type="color" label="MOD_EFFECT_CONTENT_COLOR_PRICE_BG" description="MOD_EFFECT_CONTENT_COLOR_PRICE_BG_DESC" default="#000" />
-				<field name="color_price_bg_opacity" type="number" label="MOD_EFFECT_CONTENT_COLOR_PRICE_BG_OPACITY" description="MOD_EFFECT_CONTENT_COLOR_PRICE_BG_OPACITY_DESC" min="0" max="1" step="0.1" default="1" />
-				<field name="color_button" type="color" label="MOD_EFFECT_CONTENT_COLOR_BUTTON" description="MOD_EFFECT_CONTENT_COLOR_BUTTON_DESC" default="#000" />
-				<field name="color_button_hover" type="color" label="MOD_EFFECT_CONTENT_COLOR_BUTTON_HOVER" description="MOD_EFFECT_CONTENT_COLOR_BUTTON_HOVER_DESC" default="#fff" />
-				<field name="color_button_text" type="color" label="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT" description="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT_DESC" default="#fff" />
-				<field name="color_button_text_hover" type="color" label="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT_HOVER" description="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT_HOVER_DESC" default="#000" />
-				
-				<field type="spacer" name="spacer1" class="text" label="MOD_EFFECT_CONTENT_SPACER_MEDIA_TABLET" />
-				<field name="media_tablet" type="list" label="MOD_EFFECT_CONTENT_MEDIA_TABLET" description="MOD_EFFECT_CONTENT_MEDIA_TABLET_DESC" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="cols_count_tablet" type="number" label="MOD_EFFECT_CONTENT_COLS_COUNT" description="MOD_EFFECT_CONTENT_COLS_COUNT_DESC" default="0" />
-				<field name="block_width_tablet" type="number" label="MOD_EFFECT_CONTENT_BLOCK_WIDTH" description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_DESC" default="260" />
-				<field name="block_height_tablet" type="number" label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" default="260" />
-				<field name="image_width_tablet" type="text" label="MOD_EFFECT_CONTENT_IMAGE_WIDTH" description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_DESC" default="260" />
-				<field name="image_height_tablet" type="text" label="MOD_EFFECT_CONTENT_IMAGE_HEIGHT" description="MOD_EFFECT_CONTENT_IMAGE_HEIGHT_DESC" default="260" />
-				
-				<field type="spacer" name="spacer2" class="text" label="MOD_EFFECT_CONTENT_SPACER_MEDIA_MOBILE" />
-				<field name="media_mobile" type="list" label="MOD_EFFECT_CONTENT_MEDIA_MOBILE" description="MOD_EFFECT_CONTENT_MEDIA_MOBILE" default="0">
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-				<field name="cols_count_mobile" type="number" label="MOD_EFFECT_CONTENT_COLS_COUNT" description="MOD_EFFECT_CONTENT_COLS_COUNT_DESC" default="0" />
-				<field name="block_width_mobile" type="number" label="MOD_EFFECT_CONTENT_BLOCK_WIDTH" description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_DESC" default="260" />
-				<field name="block_height_mobile" type="number" label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT" default="260" />
-				<field name="image_width_mobile" type="text" label="MOD_EFFECT_CONTENT_IMAGE_WIDTH" description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_DESC" default="260" />
-				<field name="image_height_mobile" type="text" label="MOD_EFFECT_CONTENT_IMAGE_HEIGHT" description="MOD_EFFECT_CONTENT_IMAGE_HEIGHT_DESC" default="260" />
-				
-				<field name="note20" type="note" class="alert alert-info" label="MOD_EFFECT_CONTENT_SPACER_MEDIA" description="MOD_EFFECT_CONTENT_SPACER_MEDIA_NOTE" />
-			</fieldset>
-			
-			<!-- Экспериментальные настройки -->
-			<fieldset name="MOD_EFFECT_CONTENT_EXPERIMENTAL">
-				<field name="note17" type="note" class="alert alert-error" label="MOD_EFFECT_CONTENT_EXPERIMENTAL" description="MOD_EFFECT_CONTENT_EXPERIMENTAL_NOTE" />
-			</fieldset>
-			
-			<!-- Дополнительные параметры -->
-			<fieldset name="advanced">
-				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-				<field name="layout_module" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
-			</fieldset>
-		</fields>
-	</config>
-	<!-- Файлы локализации -->
-	<languages folder="language">
-		<language tag="ru-RU">ru-RU/ru-RU.mod_effect_content.ini</language>
-		<language tag="ru-RU">ru-RU/ru-RU.mod_effect_content.sys.ini</language>
-	</languages>
-	
-	<updateservers>
-		<server type="extension" priority="1" name="Module Effect Content">http://blog-about.ru/update/mod_effect_content_update.xml</server>
-	</updateservers>
+<extension type="module" client="site" method="upgrade">
+    <!-- Название модуля -->
+    <name>MOD_EFFECT_CONTENT</name>
+    <!-- Следующие элементы являются не обязательными, информация об авторе, копирайте и т.п. -->
+    <creationDate>Май 2016</creationDate>
+    <author>А.П.В.</author>
+    <authorEmail>info@blog-about.ru</authorEmail>
+    <copyright>Copyright(C) 2016 Module Effect Content</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+    <!--  Версия модуля запишется в БД таблица extension -->
+    <version>0.4.1</version>
+    <!-- Описание, не обязательно, по умолчанию использеуется имя модуля -->
+    <description>MOD_EFFECT_CONTENT_XML_DESCRIPTION</description>
+
+    <!-- Обратите внимание на атрибут folder, он указывает из какой директории будут копироваться файлы  -->
+    <files>
+        <filename module="mod_effect_content">mod_effect_content.php</filename>
+        <filename>mod_effect_content.xml</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>fields</folder>
+        <folder>tmpl</folder>
+    </files>
+
+    <config>
+        <fields name="params">
+            <!-- Основные параметры для модуля -->
+            <fieldset name="basic">
+                <field name="layout"
+                       type="list"
+                       default="default_category"
+                       label="MOD_EFFECT_CONTENT_TYPE_LAYOUT"
+                       description="MOD_EFFECT_CONTENT_TYPE_LAYOUT_DESC"
+                >
+                    <option value="categories_joomla">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEGORIES_JOOMLA</option>
+                    <option value="articles_joomla">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ARTICLES_JOOMLA</option>
+                    <option value="articles_joomla_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ARTICLES_JOOMLA_ID</option>
+                    <option value="categories_joomshopping">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEROGIES_JOOMSHOPPING
+                    </option>
+                    <option value="products_joomshopping">MOD_EFFECT_CONTENT_TYPE_LAYOUT_PRODUCTS_JOOMSHOPPING</option>
+                    <option value="products_joomshopping_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_PRODUCTS_JOOMSHOPPING_ID
+                    </option>
+                    <!--                    <option value="categories_k2">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEROGIES_K2</option>-->
+                    <!--                    <option value="items_k2">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ITEMS_K2</option>-->
+                    <!--                    <option value="items_k2_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ITEMS_K2_ID</option>-->
+                    <!--                    <option value="categories_adsmanager">MOD_EFFECT_CONTENT_TYPE_LAYOUT_CATEROGIES_ADSMANAGER</option>-->
+                    <!--                    <option value="ads_adsmanager">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ADS_ADSMANAGER</option>-->
+                    <!--                    <option value="ads_adsmanager_id">MOD_EFFECT_CONTENT_TYPE_LAYOUT_ADS_ADSMANAGER_ID</option>-->
+                </field>
+
+                <field name="field_sort"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_FIELD_SORT"
+                       description="MOD_EFFECT_CONTENT_FIELD_SORT_DESC"
+                       default="1"
+                >
+                    <option value="1">MOD_EFFECT_CONTENT_FIELD_SORT_ID</option>
+                    <option value="2">MOD_EFFECT_CONTENT_FIELD_SORT_NAME</option>
+                    <option value="3">MOD_EFFECT_CONTENT_FIELD_SORT_DATE</option>
+                    <option value="4">MOD_EFFECT_CONTENT_FIELD_SORT_ORDERING</option>
+                    <option value="5">MOD_EFFECT_CONTENT_FIELD_SORT_RAND</option>
+                </field>
+
+                <field name="type_sort"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_TYPE_SORT"
+                       description="MOD_EFFECT_CONTENT_TYPE_SORT_DESCRIPTION"
+                       default="1"
+                >
+                    <option value="ASC">MOD_EFFECT_CONTENT_TYPE_SORT_ASC</option>
+                    <option value="DESC">MOD_EFFECT_CONTENT_TYPE_SORT_DESC</option>
+                </field>
+
+                <field name="dinamic_content"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_DINAMIC_CONTENT"
+                       description="MOD_EFFECT_CONTENT_DINAMIC_CONTENT_DESC"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="note18"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_DINAMIC_CONTENT"
+                       description="MOD_EFFECT_CONTENT_DINAMIC_CONTENT_NOTE"
+                />
+
+                <field name="items_count"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_ITEMS_COUNT"
+                       description="MOD_EFFECT_CONTENT_ITEMS_COUNT_DESC"
+                       default="0"
+                />
+
+                <field name="cols_count"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLS_COUNT"
+                       description="MOD_EFFECT_CONTENT_COLS_COUNT_DESC"
+                       default="0"
+                />
+
+                <field name="pages_count"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_PAGES_COUNT"
+                       description="MOD_EFFECT_CONTENT_PAGES_COUNT_DESC"
+                       default="0"
+                />
+
+                <field name="note19"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_PAGES_COUNT"
+                       description="MOD_EFFECT_CONTENT_PAGES_COUNT_NOTE"
+                />
+
+                <field name="block_width"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_BLOCK_WIDTH"
+                       description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_DESC"
+                       default="260"
+                />
+
+                <field name="note1"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_BLOCK_WIDTH"
+                       description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_NOTE"
+                />
+
+                <field name="block_height"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       default="260"
+                />
+
+                <field name="note2"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT_NOTE"
+                />
+
+                <field name="text_start"
+                       type="editor"
+                       label="MOD_EFFECT_CONTENT_TEXT_START"
+                       description="MOD_EFFECT_CONTENT_TEXT_START_DESC"
+                       filter="safehtml"
+                />
+
+                <field name="text_end"
+                       type="editor"
+                       label="MOD_EFFECT_CONTENT_TEXT_END"
+                       description="MOD_EFFECT_CONTENT_TEXT_END_DESC"
+                       filter="safehtml"
+                />
+            </fieldset>
+
+            <!-- Параметры вывода контента Joomla -->
+            <fieldset name="MOD_EFFECT_CONTENT_JOOMLA">
+                <field name="com_categories"
+                       type="category"
+                       multiple="multiple"
+                       extension="com_content"
+                       default=""
+                       label="MOD_EFFECT_CONTENT_COM_CATEGORIES"
+                       description="MOD_EFFECT_CONTENT_COM_CATEGORIES_DESC"
+                />
+
+                <field name="note3"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_COM_CATEGORIES"
+                       description="MOD_EFFECT_CONTENT_COM_CATEGORIES_NOTE"
+                />
+
+                <field name="articles_id"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_ARTICLES_ID"
+                       description="MOD_EFFECT_CONTENT_ARTICLES_ID_DESC"
+                       default=""
+                />
+
+                <field name="note4"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_ARTICLES_ID"
+                       description="MOD_EFFECT_CONTENT_ARTICLES_ID_NOTE"
+                />
+
+                <field name="joomla_image_from"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM"
+                       description="MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_DESC"
+                       default="0"
+                >
+                    <option value="0">MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_FIRST</option>
+                    <option value="1">MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_INTRO</option>
+                    <option value="2">MOD_EFFECT_CONTENT_JOOMLA_IMAGE_FROM_DETAIL</option>
+                </field>
+
+                <field name="joomla_desc_from"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM"
+                       description="MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_DESC"
+                       default="0"
+                >
+                    <option value="0">MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_INTRO</option>
+                    <option value="1">MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_DETAIL</option>
+                    <option value="2">MOD_EFFECT_CONTENT_JOOMLA_DESC_FROM_META</option>
+                </field>
+            </fieldset>
+
+            <!-- Параметры вывода контента Joomshopping -->
+            <fieldset name="MOD_EFFECT_CONTENT_JOOMSHOPPING" addfieldpath="/modules/mod_effect_content/fields">
+                <field name="jshoppingcategories"
+                       type="jshoppingcategories"
+                       multiple="multiple"
+                       default=""
+                       label="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING"
+                       description="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING_DESC"
+                />
+
+                <field name="note5"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING"
+                       description="MOD_EFFECT_CONTENT_CATEGORIES_JOOMSHOPPING_NOTE"
+                />
+
+                <field name="products_id"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_PRODUCTS_ID"
+                       description="MOD_EFFECT_CONTENT_PRODUCTS_ID_DESC"
+                       default=""
+                />
+
+                <field name="note6"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_PRODUCTS_ID"
+                       description="MOD_EFFECT_CONTENT_PRODUCTS_ID_NOTE"
+                />
+            </fieldset>
+
+            <!-- Параметры вывода контента K2 -->
+            <!--            <fieldset name="MOD_EFFECT_CONTENT_K2" addfieldpath="/modules/mod_effect_content/fields">-->
+            <!--                <field name="k2categories"-->
+            <!--                       type="k2categories"-->
+            <!--                       multiple="multiple"-->
+            <!--                       default=""-->
+            <!--                       label="MOD_EFFECT_CONTENT_CATEGORIES_K2"-->
+            <!--                       description="MOD_EFFECT_CONTENT_CATEGORIES_K2_DESC"-->
+            <!--                />-->
+
+            <!--                <field name="note11"-->
+            <!--                       type="note"-->
+            <!--                       class="alert alert-info"-->
+            <!--                       label="MOD_EFFECT_CONTENT_CATEGORIES_K2"-->
+            <!--                       description="MOD_EFFECT_CONTENT_CATEGORIES_K2_NOTE"-->
+            <!--                />-->
+
+            <!--                <field name="k2items_id"-->
+            <!--                       type="text"-->
+            <!--                       label="MOD_EFFECT_CONTENT_ITEMS_K2_ID"-->
+            <!--                       description="MOD_EFFECT_CONTENT_ITEMS_K2_ID_DESC"-->
+            <!--                       default=""-->
+            <!--                />-->
+
+            <!--                <field name="note12"-->
+            <!--                       type="note"-->
+            <!--                       class="alert alert-info"-->
+            <!--                       label="MOD_EFFECT_CONTENT_ITEMS_K2_ID"-->
+            <!--                       description="MOD_EFFECT_CONTENT_ITEMS_K2_ID_NOTE"-->
+            <!--                />-->
+            <!--            </fieldset>-->
+
+            <!-- Параметры вывода контента AdsManager -->
+            <!--            <fieldset name="MOD_EFFECT_CONTENT_ADSMANAGER" addfieldpath="/modules/mod_effect_content/fields">-->
+            <!--                <field name="adsmanagercategories"-->
+            <!--                       type="adsmanagercategories"-->
+            <!--                       multiple="multiple"-->
+            <!--                       default=""-->
+            <!--                       label="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER"-->
+            <!--                       description="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER_DESC"-->
+            <!--                />-->
+
+            <!--                <field name="note13"-->
+            <!--                       type="note"-->
+            <!--                       class="alert alert-info"-->
+            <!--                       label="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER"-->
+            <!--                       description="MOD_EFFECT_CONTENT_CATEGORIES_ADSMANAGER_NOTE"-->
+            <!--                />-->
+
+            <!--                <field name="ads_id"-->
+            <!--                       type="text"-->
+            <!--                       label="MOD_EFFECT_CONTENT_ADS_ID"-->
+            <!--                       description="MOD_EFFECT_CONTENT_ADS_ID_DESC"-->
+            <!--                       default=""-->
+            <!--                />-->
+
+            <!--                <field name="note14"-->
+            <!--                       type="note"-->
+            <!--                       class="alert alert-info"-->
+            <!--                       label="MOD_EFFECT_CONTENT_ADS_ID"-->
+            <!--                       description="MOD_EFFECT_CONTENT_ADS_ID_NOTE"-->
+            <!--                />-->
+            <!--            </fieldset>-->
+
+            <!-- Параметры отображения -->
+            <fieldset name="MOD_EFFECT_CONTENT_DISPLAY">
+                <field name="type_style"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_TYPE_STYLE"
+                       description="MOD_EFFECT_CONTENT_TYPE_STYLE_DESC"
+                       default="1"
+                >
+                    <option value="1">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE1</option>
+                    <option value="2">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE2</option>
+                    <option value="3">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE3</option>
+                    <option value="4">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE4</option>
+                    <option value="5">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE5</option>
+                    <option value="6">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE6</option>
+                    <option value="7">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE7</option>
+                    <option value="8">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE8</option>
+                    <option value="9">MOD_EFFECT_CONTENT_TYPE_STYLE_STYLE9</option>
+                </field>
+
+                <field name="center_blocks"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_CENTER_BLOCKS"
+                       description="MOD_EFFECT_CONTENT_CENTER_BLOCKS_DESC"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="link_all"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_LINK_ALL"
+                       description="MOD_EFFECT_CONTENT_LINK_ALL_DESC"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="display_image"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_IMAGE"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_IMAGE_DESC"
+                       default="1"
+                >
+                    <option value="0">JHIDE</option>
+                    <option value="1">JSHOW</option>
+                </field>
+
+                <field name="note7"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_IMAGE"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_IMAGE_NOTE"
+                />
+
+                <field name="image_not_found"
+                       type="media"
+                       label="MOD_EFFECT_CONTENT_NOT_IMAGE"
+                       description="MOD_EFFECT_CONTENT_NOT_IMAGE_DESC"
+                       preview="true"
+                       preview_width="200"
+                       preview_height="200"
+                />
+
+                <field name="image_width"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_IMAGE_WIDTH"
+                       description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_DESC"
+                       default="260"
+                />
+
+                <field name="image_height"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_IMAGE_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_IMAGE_HEIGHT_DESC"
+                       default="260"
+                />
+
+                <field name="note8"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_IMAGE_WIDTH_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_HEIGHT_NOTE"
+                />
+
+                <field name="title_symbol_count"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_TITLE_SYMBOL_COUNT"
+                       description="MOD_EFFECT_CONTENT_TITLE_SYMBOL_COUNT_DESC"
+                       default="0"
+                />
+
+                <field name="display_price"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_PRICE"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_PRICE_DESC"
+                       default="1"
+                >
+                    <option value="0">JHIDE</option>
+                    <option value="1">JSHOW</option>
+                </field>
+
+                <field name="decimal_count"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_DECIMAL_COUNT"
+                       description="MOD_EFFECT_CONTENT_DECIMAL_COUNT_DESC"
+                       default="2"
+                />
+
+                <field name="decimal_symbol"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_DECIMAL_SYMBOL"
+                       description="MOD_EFFECT_CONTENT_DECIMAL_SYMBOL_DESC"
+                       default="."
+                />
+
+                <field name="thousand_separator"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_THOUSAND_SEPARATOR"
+                       description="MOD_EFFECT_CONTENT_THOUSAND_SEPARATOR_DESC"
+                       default=""
+                />
+
+                <field name="note9"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_PRICE"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_PRICE_NOTE"
+                />
+
+                <field name="display_description"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION_DESC"
+                       default="1"
+                >
+                    <option value="0">JHIDE</option>
+                    <option value="1">JSHOW</option>
+                </field>
+
+                <field name="note10"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_DESCRIPTION_NOTE"
+                />
+
+                <field name="symbol_count"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_COUNT_SYMBOL"
+                       description="MOD_EFFECT_CONTENT_COUNT_SYMBOL_DESC"
+                       default="150"
+                />
+
+                <field name="end_symbol"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_COUNT_END_SYMBOL"
+                       description="MOD_EFFECT_CONTENT_COUNT_END_SYMBOL_DESC"
+                       default=""
+                />
+
+                <field name="display_read_more"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_DISPLAY_READ_MORE"
+                       description="MOD_EFFECT_CONTENT_DISPLAY_READ_MORE_DESC"
+                       default="1"
+                >
+                    <option value="0">JHIDE</option>
+                    <option value="1">JSHOW</option>
+                </field>
+
+                <field name="read_more"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_READ_MORE"
+                       description="MOD_EFFECT_CONTENT_READ_MORE_DESC"
+                       default="Подробнее"
+                />
+
+                <field name="exclude_active"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE"
+                       description="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE_DESC"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="note15"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE"
+                       description="MOD_EFFECT_CONTENT_EXCLUDE_ACTIVE_NOTE"
+                />
+
+                <field name="show_date"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_SHOW_DATE"
+                       description="MOD_EFFECT_CONTENT_SHOW_DATE_DESC"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="date_format"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_DATE_FORMAT"
+                       description="MOD_EFFECT_CONTENT_DATE_FORMAT_DESC"
+                       default="d.m.Y H:i"
+                />
+
+                <field name="note16"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_SHOW_DATE"
+                       description="MOD_EFFECT_CONTENT_SHOW_DATE_NOTE"
+                />
+            </fieldset>
+
+            <!-- Параметры отображения -->
+            <fieldset name="MOD_EFFECT_CONTENT_DESIGN">
+                <field name="color_bg"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_BG"
+                       description="MOD_EFFECT_CONTENT_COLOR_BG_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_bg_hover"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_BG_HOVER"
+                       description="MOD_EFFECT_CONTENT_COLOR_BG_HOVER_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_bg_hover_opacity"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLOR_BG_HOVER_OPACITY"
+                       description="MOD_EFFECT_CONTENT_COLOR_BG_HOVER_OPACITY_DESC"
+                       min="0"
+                       max="1"
+                       step="0.1"
+                       default="1"
+                />
+
+                <field name="color_title"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_TITLE"
+                       description="MOD_EFFECT_CONTENT_COLOR_TITLE_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_title_bg"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_TITLE_BG"
+                       description="MOD_EFFECT_CONTENT_COLOR_TITLE_BG_DESC"
+                       default="#000"
+                />
+
+                <field name="color_title_bg_opacity"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLOR_TITLE_BG_OPACITY"
+                       description="MOD_EFFECT_CONTENT_COLOR_TITLE_BG_OPACITY_DESC"
+                       min="0"
+                       max="1"
+                       step="0.1"
+                       default="1"
+                />
+
+                <field name="color_desc"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_DESC"
+                       description="MOD_EFFECT_CONTENT_COLOR_DESC_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_desc_bg"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_DESC_BG"
+                       description="MOD_EFFECT_CONTENT_COLOR_DESC_BG_DESC"
+                       default="#000"
+                />
+
+                <field name="color_desc_bg_opacity"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLOR_DESC_BG_OPACITY"
+                       description="MOD_EFFECT_CONTENT_COLOR_DESC_BG_OPACITY_DESC"
+                       min="0"
+                       max="1"
+                       step="0.1"
+                       default="1"
+                />
+
+                <field name="color_price"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_PRICE"
+                       description="MOD_EFFECT_CONTENT_COLOR_PRICE_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_price_bg"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_PRICE_BG"
+                       description="MOD_EFFECT_CONTENT_COLOR_PRICE_BG_DESC"
+                       default="#000"
+                />
+
+                <field name="color_price_bg_opacity"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLOR_PRICE_BG_OPACITY"
+                       description="MOD_EFFECT_CONTENT_COLOR_PRICE_BG_OPACITY_DESC"
+                       min="0"
+                       max="1"
+                       step="0.1"
+                       default="1"
+                />
+
+                <field name="color_button"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_BUTTON"
+                       description="MOD_EFFECT_CONTENT_COLOR_BUTTON_DESC"
+                       default="#000"
+                />
+
+                <field name="color_button_hover"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_BUTTON_HOVER"
+                       description="MOD_EFFECT_CONTENT_COLOR_BUTTON_HOVER_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_button_text"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT"
+                       description="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT_DESC"
+                       default="#fff"
+                />
+
+                <field name="color_button_text_hover"
+                       type="color"
+                       label="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT_HOVER"
+                       description="MOD_EFFECT_CONTENT_COLOR_BUTTON_TEXT_HOVER_DESC"
+                       default="#000"
+                />
+
+                <field type="spacer"
+                       name="spacer1"
+                       class="text"
+                       label="MOD_EFFECT_CONTENT_SPACER_MEDIA_TABLET"
+                />
+
+                <field name="media_tablet"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_MEDIA_TABLET"
+                       description="MOD_EFFECT_CONTENT_MEDIA_TABLET_DESC"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="cols_count_tablet"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLS_COUNT"
+                       description="MOD_EFFECT_CONTENT_COLS_COUNT_DESC"
+                       default="0"
+                />
+
+                <field name="block_width_tablet"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_BLOCK_WIDTH"
+                       description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_DESC"
+                       default="260"
+                />
+
+                <field name="block_height_tablet"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       default="260"
+                />
+
+                <field name="image_width_tablet"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_IMAGE_WIDTH"
+                       description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_DESC"
+                       default="260"
+                />
+
+                <field name="image_height_tablet"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_IMAGE_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_IMAGE_HEIGHT_DESC"
+                       default="260"
+                />
+
+                <field type="spacer"
+                       name="spacer2"
+                       class="text"
+                       label="MOD_EFFECT_CONTENT_SPACER_MEDIA_MOBILE"
+                />
+
+                <field name="media_mobile"
+                       type="list"
+                       label="MOD_EFFECT_CONTENT_MEDIA_MOBILE"
+                       description="MOD_EFFECT_CONTENT_MEDIA_MOBILE"
+                       default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="cols_count_mobile"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_COLS_COUNT"
+                       description="MOD_EFFECT_CONTENT_COLS_COUNT_DESC"
+                       default="0"
+                />
+
+                <field name="block_width_mobile"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_BLOCK_WIDTH"
+                       description="MOD_EFFECT_CONTENT_BLOCK_WIDTH_DESC"
+                       default="260"
+                />
+
+                <field name="block_height_mobile"
+                       type="number"
+                       label="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_BLOCK_HEIGHT"
+                       default="260"
+                />
+
+                <field name="image_width_mobile"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_IMAGE_WIDTH"
+                       description="MOD_EFFECT_CONTENT_IMAGE_WIDTH_DESC"
+                       default="260"
+                />
+
+                <field name="image_height_mobile"
+                       type="text"
+                       label="MOD_EFFECT_CONTENT_IMAGE_HEIGHT"
+                       description="MOD_EFFECT_CONTENT_IMAGE_HEIGHT_DESC"
+                       default="260"
+                />
+
+                <field name="note20"
+                       type="note"
+                       class="alert alert-info"
+                       label="MOD_EFFECT_CONTENT_SPACER_MEDIA"
+                       description="MOD_EFFECT_CONTENT_SPACER_MEDIA_NOTE"
+                />
+            </fieldset>
+
+            <!-- Экспериментальные настройки -->
+            <fieldset name="MOD_EFFECT_CONTENT_EXPERIMENTAL">
+                <field name="note17"
+                       type="note"
+                       class="alert alert-error"
+                       label="MOD_EFFECT_CONTENT_EXPERIMENTAL"
+                       description="MOD_EFFECT_CONTENT_EXPERIMENTAL_NOTE"
+                />
+            </fieldset>
+
+            <!-- Дополнительные параметры -->
+            <fieldset name="advanced">
+                <field name="moduleclass_sfx"
+                       type="textarea"
+                       label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                       rows="3"
+                       validate="CssIdentifier"
+                />
+
+                <field name="layout_module"
+                       type="modulelayout"
+                       label="JFIELD_ALT_LAYOUT_LABEL"
+                       description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                       class="form-select"
+                       validate="moduleLayout"
+                />
+            </fieldset>
+        </fields>
+    </config>
+
+    <!-- Файлы локализации -->
+    <languages folder="language">
+        <language tag="en-GB">en-GB/mod_effect_content.ini</language>
+        <language tag="en-GB">en-GB/mod_effect_content.sys.ini</language>
+        <language tag="ru-RU">ru-RU/mod_effect_content.ini</language>
+        <language tag="ru-RU">ru-RU/mod_effect_content.sys.ini</language>
+    </languages>
+
+    <updateservers>
+        <server type="extension" priority="1" name="Module Effect Content">
+            http://blog-about.ru/update/mod_effect_content_update.xml
+        </server>
+    </updateservers>
 </extension>
